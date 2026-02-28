@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy 1st Anniversary ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom right, #ffd6e8, #fff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.card {
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    text-align: center;
+    width: 350px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+h1 {
+    color: #d63384;
+}
+
+button {
+    background: #ff85a2;
+    border: none;
+    padding: 10px 15px;
+    margin: 8px;
+    border-radius: 20px;
+    cursor: pointer;
+    color: white;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #e64980;
+    transform: scale(1.05);
+}
+
+img {
+    width: 100%;
+    border-radius: 15px;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+img:hover {
+    transform: scale(1.05);
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+.heart {
+    position: absolute;
+    color: pink;
+    animation: float 6s infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh); }
+    100% { transform: translateY(-10vh); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="login">
+    <h1>💌 Enter Our Special Password</h1>
+    <input type="password" id="password" placeholder="Enter here">
+    <br><br>
+    <button onclick="checkPassword()">Unlock ❤️</button>
+    <p id="error" style="color:red;"></p>
+</div>
+
+<div class="card hidden" id="main">
+    <h1>Happy 1st Anniversary ❤️</h1>
+    <img src="photo.jpg" alt="Our Photo">
+
+    <p id="counter"></p>
+
+    <button onclick="showLetter()">Open My Letter 💌</button>
+    <div id="letter" class="hidden">
+        <p>
+        My love, thank you for the most beautiful year of my life.
+        You are my happiness, my comfort, and my forever.
+        I love you more every single day ❤️
+        </p>
+    </div>
+
+    <button onclick="showReasons()">Why I Love You 💖</button>
+    <div id="reasons" class="hidden">
+        <p>1. You make me smile everyday.</p>
+        <p>2. You understand me.</p>
+        <p>3. You make me feel safe.</p>
+        <p>4. You are my best friend.</p>
+        <p>5. You are my home ❤️</p>
+    </div>
+
+    <button onclick="surprise()">Click For Surprise 🎆</button>
+</div>
+
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+function checkPassword() {
+    var pass = document.getElementById("password").value;
+    if(pass === "030325") {
+        document.getElementById("login").classList.add("hidden");
+        document.getElementById("main").classList.remove("hidden");
+        document.getElementById("bgMusic").play();
+        startCounter();
+    } else {
+        document.getElementById("error").innerText = "That's not our love password 🥺";
+    }
+}
+
+function showLetter() {
+    document.getElementById("letter").classList.toggle("hidden");
+}
+
+function showReasons() {
+    document.getElementById("reasons").classList.toggle("hidden");
+}
+
+function surprise() {
+    alert("I LOVE YOU FOREVER ❤️ Happy 1st Anniversary!");
+}
+
+function startCounter() {
+    var startDate = new Date("March 3, 2025 00:00:00").getTime();
+    setInterval(function() {
+        var now = new Date().getTime();
+        var distance = now - startDate;
+
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+        var minutes = Math.floor((distance / (1000 * 60)) % 60);
+
+        document.getElementById("counter").innerHTML =
+            "We've been together for 💕<br>" +
+            days + " days " + hours + " hours " + minutes + " minutes ❤️";
+    }, 1000);
+}
+
+for (let i = 0; i < 15; i++) {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    document.body.appendChild(heart);
+}
+</script>
+
+</body>
+  </html>
