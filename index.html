@@ -13,8 +13,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    overflow: hidden;
+    min-height: 100vh;  /* changed from height: 100vh */
+    overflow-x: hidden;
+    overflow-y: auto;   /* allow vertical scroll */
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .card {
@@ -24,13 +27,12 @@ body {
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     text-align: center;
-    width: 350px;
+    width: 100%;
+    max-width: 400px; /* responsive width */
     animation: fadeIn 1.5s ease-in-out;
 }
 
-h1 {
-    color: #d63384;
-}
+h1 { color: #d63384; }
 
 button {
     background: #ff85a2;
@@ -43,10 +45,7 @@ button {
     transition: 0.3s;
 }
 
-button:hover {
-    background: #e64980;
-    transform: scale(1.05);
-}
+button:hover { background: #e64980; transform: scale(1.05); }
 
 img {
     width: 100%;
@@ -55,18 +54,11 @@ img {
     transition: 0.3s;
 }
 
-img:hover {
-    transform: scale(1.05);
-}
+img:hover { transform: scale(1.05); }
 
-.hidden {
-    display: none;
-}
+.hidden { display: none; }
 
-@keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
+@keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
 
 .heart {
     position: absolute;
@@ -93,6 +85,7 @@ img:hover {
 
 <div class="card hidden" id="main">
     <h1>Happy 1st Anniversary ❤️</h1>
+    <!-- Keep your image exactly where it is -->
     <img src="IMG_20251230_201945_967.jpg" alt="Our Photo">
 
     <p id="counter"></p>
@@ -118,6 +111,7 @@ img:hover {
     <button onclick="surprise()">Click For Surprise 🎆</button>
 </div>
 
+<!-- Keep your audio exactly where it is -->
 <audio id="bgMusic" loop>
     <source src="music.mp3" type="audio/mpeg">
 </audio>
@@ -135,17 +129,9 @@ function checkPassword() {
     }
 }
 
-function showLetter() {
-    document.getElementById("letter").classList.toggle("hidden");
-}
-
-function showReasons() {
-    document.getElementById("reasons").classList.toggle("hidden");
-}
-
-function surprise() {
-    alert("I LOVE YOU FOREVER ❤️ Happy 1st Anniversary!");
-}
+function showLetter() { document.getElementById("letter").classList.toggle("hidden"); }
+function showReasons() { document.getElementById("reasons").classList.toggle("hidden"); }
+function surprise() { alert("I LOVE YOU FOREVER ❤️ Happy 1st Anniversary!"); }
 
 function startCounter() {
     var startDate = new Date("March 3, 2025 00:00:00").getTime();
@@ -163,6 +149,7 @@ function startCounter() {
     }, 1000);
 }
 
+// Floating hearts
 for (let i = 0; i < 15; i++) {
     let heart = document.createElement("div");
     heart.className = "heart";
@@ -175,4 +162,4 @@ for (let i = 0; i < 15; i++) {
 </script>
 
 </body>
-  </html>
+</html>
